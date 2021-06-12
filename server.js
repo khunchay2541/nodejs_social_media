@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const postRouter = require("./routes/posts");
 
 const URI = 'mongodb+srv://admin_khunchay:admin1234@cluster0.sspfa.mongodb.net/social?retryWrites=true&w=majority'
 
@@ -23,8 +24,10 @@ app.use(express.json())
 app.use(helmet());
 app.use(morgan("common"))
 
-app.use("/api/users", userRouter)
+
 app.use("/api/auth", authRouter)
+app.use("/api/users", userRouter)
+app.use("/api/posts", postRouter)
 
 connectDB()
 
